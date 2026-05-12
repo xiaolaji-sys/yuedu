@@ -23,6 +23,34 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
+    - name: Download and setup Gradle Wrapper
+      run: |
+        # 检查Gradle Wrapper是否完整
+        if [ ! -f gradlew ]; then
+          echo "❌ gradlew not found, downloading..."
+          curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradlew > gradlew
+          chmod +x gradlew
+        fi
+        
+        if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+          echo "❌ gradle-wrapper.jar not found, downloading..."
+          mkdir -p gradle/wrapper
+          curl -L https://github.com/gradle/gradle/raw/master/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+        fi
+        
+        if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
+          echo "❌ gradle-wrapper.properties not found, downloading..."
+          curl -L https://github.com/gradle/gradle/raw/master/gradle/wrapper/gradle-wrapper.properties -o gradle/wrapper/gradle-wrapper.properties
+        fi
+        
+        # 验证Gradle Wrapper
+        echo "✅ Gradle Wrapper files downloaded"
+        ls -la gradle/wrapper/
+        chmod +x gradlew
+
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
+
     - name: Cache Gradle dependencies
       uses: actions/cache@v3
       with:
@@ -32,9 +60,6 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-
-    - name: Make gradlew executable
-      run: chmod +x ./gradlew
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
@@ -189,4 +214,3 @@ jobs:
         packageName: com.legado.reader
         releaseFiles: artifacts/release-apk/app-release-unsigned-signed.apk
         track: internal
-        status: completed
