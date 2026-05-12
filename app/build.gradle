@@ -4,9 +4,11 @@ plugins {
 }
 
 android {
+    namespace "com.legado.read"
     compileSdk = 34
 
     defaultConfig {
+        applicationId "com.legado.read"
         minSdk = 21
         targetSdk = 34
 
@@ -51,5 +53,5 @@ android {
 }
 
 dependencies {
-    //保留你自己所有依赖不动
+    // 保留你原本所有依赖
 }
