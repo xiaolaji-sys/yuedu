@@ -1,13 +1,5 @@
 // Project-wide Gradle configuration
 
-// IDE settings
-idea {
-    module {
-        isDownloadJavadoc = true
-        isDownloadSources = true
-    }
-}
-
 // Build cache
 buildCache {
     local {
