@@ -1,21 +1,5 @@
 // Project-wide Gradle configuration
 
-// Build cache
-buildCache {
-    local {
-        enabled = true
-    }
-    remote(HttpBuildCache::class) {
-        url = uri("https://cache.company.com/build-cache/")
-        enabled = false
-    }
-}
-
-// Kotlin compiler options
-kotlin {
-    jvmTarget = "17"
-}
-
 // Android configuration
 android {
     compileSdk = 34
@@ -62,4 +46,8 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+dependencies {
+    // 这里是你的依赖配置，原来的内容保留不动
 }
