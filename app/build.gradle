@@ -1,4 +1,7 @@
-// Project-wide Gradle configuration
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 
 // Android configuration
 android {
@@ -49,5 +52,5 @@ android {
 }
 
 dependencies {
-    // 这里是你的依赖配置，原来的内容保留不动
+    // 这里保留你原来的所有依赖配置
 }
