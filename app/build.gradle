@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace "com.legado.read"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId "com.legado.read"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -53,5 +53,5 @@ android {
 }
 
 dependencies {
-    // 保留你原本所有依赖
+    // 你原有依赖不动
 }
