@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace "com.legado.read"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId "com.legado.read"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -57,5 +57,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // 下面放你自己原本所有依赖
+    implementation 'androidx.activity:activity-ktx:1.8.0'
+    // 保留你原有所有依赖
 }
